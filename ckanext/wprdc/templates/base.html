@@ -23,17 +23,17 @@
     </title>
 
     {% block links -%}
-      <link rel="shortcut icon" href="/assets/img/favicon.png?v=1" />
+      <link rel="shortcut icon" href="{{ g.site_url + '/assets/img/favicon.png?v=1' }}" />
     {% endblock -%}
 
     {%- block styles %}
         {% resource g.main_css[6:] %}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
-        <link rel="stylesheet" href="/assets/css/wprdc.css" />
+        <link rel="stylesheet" href="{{ g.site_url + '/assets/css/wprdc.css' }}" />
     {% endblock %}
 
     {%- block header_scripts %}
-        <script src="/assets/js/modernizr.js"></script>
+        <script src="{{ g.site_url + '/assets/js/modernizr.js' }}"></script>
     {% endblock %}
 
     {% block head_extras %}
@@ -53,8 +53,8 @@
     {%- block page %}{% endblock -%}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/assets/js/foundation.min.js"></script>
-    <script src="/assets/js/wprdc.js"></script>
+    <script src="{{ g.site_url + '/assets/js/foundation.min.js' }}"></script>
+    <script src="{{ g.site_url + '/assets/js/wprdc.js' }}"></script>
     {%- block scripts %}{% endblock -%}
 
     {% block body_extras -%}
