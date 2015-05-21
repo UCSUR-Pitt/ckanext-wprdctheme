@@ -1,0 +1,17 @@
+*.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+*ehthumbs.db
+*Thumbs.db
+.idea
+*~
+build/
+dist/
+*.pyc
+*.egg-info
+npm-debug.log
+node_modules
+bower_components
+.sass-cache

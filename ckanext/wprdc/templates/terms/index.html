@@ -1,0 +1,38 @@
+{% import 'macros/form.html' as form %}
+
+{% extends "page.html" %}
+
+{% block user_agreement %}{%- endblock -%}
+{% block flash %}{% endblock %}
+{% block breadcrumb %}{% endblock %}
+{% block secondary %}{% endblock %}
+
+{% block primary %}
+<article class="module">
+    <div class="module-content">
+        <h1>Terms of Use</h1>
+        <hr>
+        <p>
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae, eos error expedita fuga hic impedit minima officia officiis quasi quidem rem, sit totam vel voluptatum? Incidunt reiciendis reprehenderit sunt?</span>
+            <span>Assumenda autem cumque incidunt repellat soluta? A amet aspernatur assumenda consequuntur dicta eaque ex hic inventore ipsum magnam perspiciatis placeat quae quas quis quo, rem, rerum, saepe sed? Ipsa, non.</span>
+        </p>
+        <p>
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae, eos error expedita fuga hic impedit minima officia officiis quasi quidem rem, sit totam vel voluptatum? Incidunt reiciendis reprehenderit sunt?</span>
+            <span>Assumenda autem cumque incidunt repellat soluta? A amet aspernatur assumenda consequuntur dicta eaque ex hic inventore ipsum magnam perspiciatis placeat quae quas quis quo, rem, rerum, saepe sed? Ipsa, non.</span>
+        </p>
+        <p>
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae, eos error expedita fuga hic impedit minima officia officiis quasi quidem rem, sit totam vel voluptatum? Incidunt reiciendis reprehenderit sunt?</span>
+            <span>Assumenda autem cumque incidunt repellat soluta? A amet aspernatur assumenda consequuntur dicta eaque ex hic inventore ipsum magnam perspiciatis placeat quae quas quis quo, rem, rerum, saepe sed? Ipsa, non.</span>
+        </p>
+        <p>
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae, eos error expedita fuga hic impedit minima officia officiis quasi quidem rem, sit totam vel voluptatum? Incidunt reiciendis reprehenderit sunt?</span>
+            <span>Assumenda autem cumque incidunt repellat soluta? A amet aspernatur assumenda consequuntur dicta eaque ex hic inventore ipsum magnam perspiciatis placeat quae quas quis quo, rem, rerum, saepe sed? Ipsa, non.</span>
+        </p>
+        <form action="" method="POST">
+            <input type="hidden" name="came_from" value="{{request.params.get('came_from', h.url('/', locale='default', qualified=true))}}" />
+            <input type="submit" class="btn" value="I Agree to the Terms of Use" />
+        </form>
+    </div>
+</article>
+{%- endblock -%}
+

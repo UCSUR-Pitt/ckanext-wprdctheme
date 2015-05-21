@@ -1,0 +1,77 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+
+// Table of Contents
+// Foundation Settings
+//
+// a. Base
+// b. Global
+// b. Type
+// 01. Top Bar
+
+
+// a. Base
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@import "foundation/functions";
+
+$include-html-form-classes: false;
+
+// b. Global
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+$white       : #FFFFFF;
+$ghost       : #FAFAFA;
+$snow        : #F9F9F9;
+$vapor       : #F6F6F6;
+$white-smoke : #F5F5F5;
+$silver      : #EFEFEF;
+$smoke       : #EEEEEE;
+$gainsboro   : #DDDDDD;
+$iron        : #CCCCCC;
+$base        : #AAAAAA;
+$aluminum    : #999999;
+$jumbo       : #888888;
+$monsoon     : #777777;
+$steel       : #666666;
+$charcoal    : #555555;
+$tuatara     : #444444;
+$oil         : #333333;
+$jet         : #222222;
+$black       : #000000;
+$wprdc-blue   : #2ba6cb;
+$body-bg: $jet;
+$body-font-color: $tuatara;
+
+
+// c. Type
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+$font-family-sans-serif: 'Lato', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
+
+$h1-font-size: rem-calc(36);
+$h2-font-size: rem-calc(24);
+$h3-font-size: rem-calc(18);
+$h4-font-size: rem-calc(16);
+$h5-font-size: rem-calc(14);
+$h6-font-size: 1rem;
+
+$header-font-color: $oil;
+
+
+// 01. Top Bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+$topbar-bg-color: $jet;
+$topbar-bg: $topbar-bg-color;
+$accout-header-height: rem-calc(25);
+$topbar-height: rem-calc(55);
+$topbar-margin-bottom: 0;
+$topbar-dropdown-link-bg-hover: $wprdc-blue;
+$topbar-transition-speed: 300ms;
+$topbar-breakpoint: 800px; // Change to 9999px for always mobile layout
+$topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
+
+
+

@@ -1,0 +1,76 @@
+<div id="account-header" class="clearfix">
+    <div class="right clearfix">
+        {% if c.userobj %}
+            <nav>
+            {% if c.userobj.sysadmin %}
+                <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
+                    <i class="icon-legal" aria-hidden="true"></i>
+                    <span class="text">{{ _('Admin') }}</span>
+                </a>
+            {% endif %}
+                <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">
+                  <i class="icon-user" aria-hidden="true"></i>
+                  <span class="username">{{ c.userobj.display_name }}</span>
+                </a>
+                <a href="{{ h.url_for(controller='user', action='dashboard') }}" title="{{ notifications_tooltip }}">
+                  <i class="icon-dashboard" aria-hidden="true"></i>
+                  <span class="text">{{ _('Dashboard') }}</span>
+                </a>
+                <a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}" title="Edit Settings">
+                   <i class="icon-cog" aria-hidden="true"></i>
+                   <span class="text">Settings</span>
+                </a>
+                <a href="{{ h.url_for('/user/_logout') }}" title="Logout">
+                   <i class="icon-signout" aria-hidden="true"></i>
+                   <span class="text">Logout</span>
+                </a>
+            </nav>
+        {% else %}
+            <nav>
+                <a href="{{ h.url_for(controller='user', action='login') }}" title="Log in">
+                   <i class="icon-home" aria-hidden="true"></i>
+                   <span class="text">Log In</span>
+                </a>
+                <a href="{{ h.url_for(controller='user', action='register') }}" title="Register">
+                   <i class="icon-plus" aria-hidden="true"></i>
+                   <span class="text">Register</span>
+                </a>
+            </nav>
+        {% endif %}
+    </div>
+</div>
+
+<div id="header">
+    <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+            <li class="name">
+                <h1>
+                    <a href="{{ h.wprdc_wordpress_url() }}">
+                        <img src="/assets/img/small-logo.png" alt="Small WPRDC Logo"/>
+                    </a>
+                </h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+        </ul>
+        <section class="top-bar-section">
+            <ul id="menu-topbar-nav" class="right">
+                <li><a href="{{ h.wprdc_wordpress_url() }}">Home</a></li>
+                <li><a href="{{ h.wprdc_wordpress_url() }}/about">About</a></li>
+                <li class="active has-dropdown">
+                    <a href="#">Data</a>
+                    <ul class="sub-menu dropdown">
+                    {{h.build_nav_main(
+                        ('search', _('Datasets')),
+                        ('organizations_index', _('Organizations')),
+                        ('group_index', _('Groups/Topics'))
+                    )}}
+                    </ul>
+                </li>
+                <li><a href="{{ h.wprdc_wordpress_url() }}/news">News</a></li>
+                <li><a href="{{ h.wprdc_wordpress_url() }}/events">Events</a></li>
+                <li><a href="{{ h.wprdc_wordpress_url() }}/resources">Resources</a></li>
+                <li><a href="{{ h.wprdc_wordpress_url() }}/contact">Contact</a></li>
+            </ul>
+        </section>
+    </nav>
+</div>

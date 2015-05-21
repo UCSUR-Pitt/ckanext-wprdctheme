@@ -1,0 +1,64 @@
+{%- block doctype %}<!DOCTYPE html>{% endblock -%}
+{%- block htmltag -%}
+{% set lang = h.lang() %}
+<!--[if IE 7]> <html lang="{{ lang }}" class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html lang="{{ lang }}" class="ie ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="{{ lang }}" class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ lang }}"> <!--<![endif]-->
+{%- endblock -%}
+
+  <head{% block headtag %}{% endblock %}>
+    {%- block meta -%}
+      <meta charset="utf-8" />
+      {% block meta_generator %}<meta name="generator" content="ckan {{ c.__version__ }}" />{% endblock %}
+      {% block meta_viewport %}<meta name="viewport" content="width=device-width, initial-scale=1.0">{% endblock %}
+    {%- endblock -%}
+
+    <title>
+      {%- block title -%}
+        {%- block subtitle %}{% endblock -%}
+        {%- if self.subtitle()|trim %} {{ g.template_title_deliminater }} {% endif -%}
+        {{ g.site_title }}
+      {%- endblock -%}
+    </title>
+
+    {% block links -%}
+      <link rel="shortcut icon" href="/assets/img/favicon.png?v=1" />
+    {% endblock -%}
+
+    {%- block styles %}
+        {% resource g.main_css[6:] %}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="stylesheet" href="/assets/css/wprdc.css" />
+    {% endblock %}
+
+    {%- block header_scripts %}
+        <script src="/assets/js/modernizr.js"></script>
+    {% endblock %}
+
+    {% block head_extras %}
+      {{ g.template_head_end | safe }}
+    {% endblock %}
+
+    {%- block custom_styles %}
+      {%- if g.site_custom_css -%}
+      <style>
+        {{ g.site_custom_css | safe }}
+      </style>
+      {%- endif %}
+    {% endblock %}
+  </head>
+  <body{% block bodytag %} data-site-root="{{ h.url('/', locale='default', qualified=true) }}" data-locale-root="{{ h.url('/', qualified=true) }}" {% endblock %}>
+
+    {%- block page %}{% endblock -%}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/assets/js/foundation.min.js"></script>
+    <script src="/assets/js/wprdc.js"></script>
+    {%- block scripts %}{% endblock -%}
+
+    {% block body_extras -%}
+      {{ g.template_footer_end | safe }}
+    {%- endblock %}
+  </body>
+</html>

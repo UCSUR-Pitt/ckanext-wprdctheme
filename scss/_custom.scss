@@ -1,0 +1,88 @@
+//
+
+// Table of Contents
+// Settings
+//
+// 01. CKAN Menu Bar
+// 02. CKAN Main Content
+// 03. CKAN Sidebar
+// 04. Footer
+
+//
+
+// 01. CKAN Menu Bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+#account-header {
+  background: $wprdc-blue;
+  height: $accout-header-height;
+  nav {
+    a {
+      line-height: $accout-header-height;
+      font-size: rem-calc(14);
+      padding: ($topbar-link-padding / 2);
+      color: $oil;
+    }
+  }
+}
+
+// 02. CKAN Main Content
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+div.primary.span9 {
+
+  .dataset-item {
+    .dataset-heading a {
+      font-size: rem-calc(20);
+      font-weight: bold;
+    }
+    div {
+      font-size: rem-calc(14);
+    }
+  }
+
+  ul[data-module=media-grid] {
+    box-sizing: content-box;
+  }
+
+  form.dataset-form {
+    box-sizing: content-box;
+  }
+}
+
+
+// 03. CKAN Sidebar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+aside.secondary.span3 {
+  div.module-content {
+    p {
+      font-size: rem-calc(13);
+    }
+  }
+  p.module-content {
+    font-size: rem-calc(13);
+  }
+}
+
+
+// 04. Footer
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+#footer {
+  .sub-footer {
+    padding: 15px 0px 10px 0px;
+    background: $oil;
+    color: $iron;
+    .footer-title {
+      margin-bottom: 0px;
+      font-size: 1.6875rem;
+    }
+  }
+  .legal {
+    background: $jet;
+    color: $steel;
+    p {
+      font-size: 9.5pt;
+      margin: 7px 0px 5px;
+    }
+  }
+}
+
+
