@@ -18,6 +18,7 @@ Edit your CKAN Configuration .INI file
 
 ```bash
 ckan.wordpress_url = http://<wordpress_url>
+ckan.google_tracking = UA-00000000-01
 ckan.plugins = ... wprdc
 ```
 

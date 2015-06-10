@@ -31,11 +31,16 @@ class WPRDCPlugin(p.SingletonPlugin):
         url = config.get('ckan.wordpress_url', 'http://www.wprdc.org')
         return url
 
+    def get_google_tracking(self):
+        url = config.get('ckan.google_tracking', '')
+        return url
+
     def get_helpers(self):
         return {
             'wprdc_user_terms': self.check_user_terms,
             'wprdc_get_year': self.get_current_year,
-            'wprdc_wordpress_url': self.get_wordpress_url
+            'wprdc_wordpress_url': self.get_wordpress_url,
+            'wprdc_google_tracking': self.get_google_tracking,
         }
 
     def before_map(self, map):
