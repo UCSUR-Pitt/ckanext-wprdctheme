@@ -45,6 +45,16 @@ div.primary.span9 {
 
   form.dataset-form {
     box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+  }
+  form.form-horizontal {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+  button.highlight {
+      margin: 0;
   }
 }
 

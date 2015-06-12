@@ -1,4 +1,5 @@
 import logging
+import re
 import pylons.config as config
 import ckan.plugins as p
 import ckan.lib.helpers as h
@@ -6,6 +7,15 @@ from ckan.common import request
 from datetime import date
 
 log = logging.getLogger('ckanext.wprdc')
+
+
+def check_if_google():
+    regex = re.compile("bot|crawl|slurp|spider|python", re.IGNORECASE)
+    r = regex.search(request.environ.get('HTTP_USER_AGENT', ''))
+    if r:
+        return True
+    else:
+        return False
 
 class WPRDCPlugin(p.SingletonPlugin):
 
@@ -18,11 +28,14 @@ class WPRDCPlugin(p.SingletonPlugin):
         p.toolkit.add_public_directory(config, 'public')
 
     def check_user_terms(self):
-        if 'wprdc_user_terms' in request.cookies:
+        if check_if_google():
             return True
         else:
-            controller = 'ckanext.wprdc.controller:WPRDCController'
-            h.redirect_to(controller=controller, action='view_terms', came_from=request.url)
+            if 'wprdc_user_terms' in request.cookies:
+                return True
+            else:
+                controller = 'ckanext.wprdc.controller:WPRDCController'
+                h.redirect_to(controller=controller, action='view_terms', came_from=request.url)
 
     def get_current_year(self):
         return date.today().year
