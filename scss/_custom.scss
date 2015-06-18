@@ -7,6 +7,7 @@
 // 02. CKAN Main Content
 // 03. CKAN Sidebar
 // 04. Footer
+// 04. Terms of Use
 
 //
 
@@ -95,4 +96,25 @@ aside.secondary.span3 {
   }
 }
 
-
+// 05. Terms of Use
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+#terms {
+  .underline {
+    text-decoration: underline;
+  }
+  .no-list {
+    list-style: none;
+  }
+  ol {
+    li {
+      margin-top: 10px;
+    }
+    ol {
+      margin-top: 0;
+      margin-bottom: 15px;
+      li {
+        margin-top: 5px;
+      }
+    }
+  }
+}

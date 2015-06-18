@@ -1011,4 +1011,14 @@ aside.secondary.span3 p.module-content { font-size: 0.8125rem; }
 
 #footer .legal p { font-size: 9.5pt; margin: 7px 0px 5px; }
 
+#terms .underline { text-decoration: underline; }
+
+#terms .no-list { list-style: none; }
+
+#terms ol li { margin-top: 10px; }
+
+#terms ol ol { margin-top: 0; margin-bottom: 15px; }
+
+#terms ol ol li { margin-top: 5px; }
+
 /* END FILE */
