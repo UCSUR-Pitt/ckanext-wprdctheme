@@ -57,6 +57,11 @@ div.primary.span9 {
   button.highlight {
       margin: 0;
   }
+  div.pagination {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+  }
 }
 
 

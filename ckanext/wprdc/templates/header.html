@@ -5,24 +5,24 @@
             {% if c.userobj.sysadmin %}
                 <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
                     <i class="icon-legal" aria-hidden="true"></i>
-                    <span class="text">{{ _('Admin') }}</span>
+                    <span class="text  hide-for-small">{{ _('Admin') }}</span>
                 </a>
             {% endif %}
                 <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">
                   <i class="icon-user" aria-hidden="true"></i>
-                  <span class="username">{{ c.userobj.display_name }}</span>
+                  <span class="username hide-for-small">{{ c.userobj.display_name }}</span>
                 </a>
                 <a href="{{ h.url_for(controller='user', action='dashboard') }}" title="{{ notifications_tooltip }}">
                   <i class="icon-dashboard" aria-hidden="true"></i>
-                  <span class="text">{{ _('Dashboard') }}</span>
+                  <span class="text  hide-for-small">{{ _('Dashboard') }}</span>
                 </a>
                 <a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}" title="Edit Settings">
                    <i class="icon-cog" aria-hidden="true"></i>
-                   <span class="text">Settings</span>
+                   <span class="text hide-for-small">Settings</span>
                 </a>
                 <a href="{{ h.url_for('/user/_logout') }}" title="Logout">
                    <i class="icon-signout" aria-hidden="true"></i>
-                   <span class="text">Logout</span>
+                   <span class="text hide-for-small">Logout</span>
                 </a>
             </nav>
         {% else %}

@@ -1,10 +1,15 @@
 import logging
 import re
 import pylons.config as config
+import ckan.lib.captcha as captcha
 import ckan.plugins as p
 import ckan.lib.helpers as h
 from ckan.common import request
 from datetime import date
+from dateutil import tz
+import urllib
+import urllib2
+import json
 
 log = logging.getLogger('ckanext.wprdc')
 
@@ -16,6 +21,7 @@ def check_if_google():
         return True
     else:
         return False
+
 
 class WPRDCPlugin(p.SingletonPlugin):
 
@@ -48,12 +54,35 @@ class WPRDCPlugin(p.SingletonPlugin):
         url = config.get('ckan.google_tracking', '')
         return url
 
+    def convert_to_local(self, time, date_format=None, with_hours=False):
+        from_zone = tz.tzutc()
+        to_zone = tz.tzlocal()
+        utc = h._datestamp_to_datetime(str(time))
+
+        if not utc:
+            return ''
+
+        utc = utc.replace(tzinfo=from_zone)
+        time = utc.astimezone(to_zone)
+
+        # if date_format was supplied we use it
+        if date_format:
+            return time.strftime(date_format)
+
+        # if with_hours was supplied show them
+        if with_hours:
+            return time.strftime('%B %-d, %Y, %-I:%M %p')
+        else:
+            return time.strftime('%B %-d, %Y')
+
+
     def get_helpers(self):
         return {
             'wprdc_user_terms': self.check_user_terms,
             'wprdc_get_year': self.get_current_year,
             'wprdc_wordpress_url': self.get_wordpress_url,
             'wprdc_google_tracking': self.get_google_tracking,
+            'render_datetime': self.convert_to_local,
         }
 
     def before_map(self, map):
@@ -68,3 +97,24 @@ class WPRDCPlugin(p.SingletonPlugin):
         return map
 
 
+# monkey patch till CKAN v2.5 stable release
+def replace_check_recaptcha(request):
+    recaptcha_private_key = config.get('ckan.recaptcha.privatekey', '')
+    if not recaptcha_private_key:
+        return
+    client_ip_address = request.environ.get('REMOTE_ADDR', 'Unknown IP Address')
+    recaptcha_response_field = request.params.get('g-recaptcha-response', '')
+    recaptcha_server_name = 'https://www.google.com/recaptcha/api/siteverify'
+    params = urllib.urlencode(dict(secret=recaptcha_private_key,
+                                   remoteip=client_ip_address,
+                                   response=recaptcha_response_field.encode('utf8')))
+    f = urllib2.urlopen(recaptcha_server_name, params)
+    data = json.load(f)
+    f.close()
+    try:
+        if not data['success']:
+            raise captcha.CaptchaError()
+    except IndexError:
+        raise captcha.CaptchaError()
+
+captcha.check_recaptcha = replace_check_recaptcha
