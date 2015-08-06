@@ -1,18 +1,19 @@
 {
-    "name": "ckanext-wprdc",
-    "domain": "wprdc",
-    "version": "0.0.1",
-    "author": {
-        "name": "Koury Lape",
-        "url": "http://github.com/ckylape"
-    },
-    "devDependencies": {
-        "grunt": "latest",
-        "grunt-contrib-watch": "latest",
-        "grunt-sass": "latest",
-        "grunt-sync": "latest",
-        "load-grunt-tasks": "latest",
-        "time-grunt": "latest"
-    },
-    "private": "true"
+  "name": "ckanext-wprdc",
+  "domain": "wprdc",
+  "version": "0.0.1",
+  "author": {
+    "name": "Koury Lape",
+    "url": "http://github.com/ckylape"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-sass": "latest",
+    "grunt-sync": "latest",
+    "load-grunt-tasks": "latest",
+    "time-grunt": "latest"
+  },
+  "private": "true"
 }

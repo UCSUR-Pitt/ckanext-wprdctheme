@@ -9,13 +9,17 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'ckanext/wprdc/public/assets/css/<%= pkg.domain %>.css': 'scss/main.scss'
+                    'ckanext/wprdc/fanstatic/styles/<%= pkg.domain %>.css': 'scss/main.scss'
                 }
             }
         },
 
+        clean: {
+          js: ['ckanext/wprdc/fanstatic/scripts/vendor/*.min.js']
+        },
+
         sync: {
-            main: {
+            min: {
                 files: [
                     {
                         expand: true,
@@ -24,10 +28,13 @@ module.exports = function(grunt) {
                             'bower_components/foundation/js/foundation.min.js',
                             'bower_components/foundation/js/vendor/modernizr.js'
                         ],
-                        dest: 'ckanext/wprdc/public/assets/js'
+                        dest: 'ckanext/wprdc/fanstatic/scripts/vendor'
                     }
-                ],
-                verbose: true
+                ]
+            },
+            rename_foundation: {
+                src: 'ckanext/wprdc/fanstatic/scripts/vendor/foundation.min.js',
+                dest: 'ckanext/wprdc/fanstatic/scripts/vendor/foundation.js'
             }
         },
 
@@ -42,6 +49,6 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
     require('time-grunt')(grunt);
 
-    grunt.registerTask('default', ['sync','sass','watch']);
-    grunt.registerTask('build', ['sync','sass']);
+    grunt.registerTask('default', ['sync', 'clean', 'sass','watch']);
+    grunt.registerTask('build', ['sync', 'clean', 'sass']);
 };

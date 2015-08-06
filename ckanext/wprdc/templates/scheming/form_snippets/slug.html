@@ -1,0 +1,17 @@
+{% set error = errors[field.field_name] %}
+
+<div class="control-group {% if error %} error{% endif %}">
+    <label class="control-label" for="field-{{ field.field_name }}">
+        {% if h.scheming_field_required(field) %}
+            <span title="This field is required" class="control-required">*</span>
+        {% endif %}
+        {{ h.scheming_language_text(field.label) }}
+    </label>
+    <div class="controls">
+        <div class="input-prepend">
+            <span class="add-on">/dataset/</span>
+            <input id="field-{{ field.field_name }}" name="{{ field.field_name }}" type="text" data-module="slug-generator" value="{{ data[field.field_name] | empty_and_escape }}" placeholder="{{ h.scheming_language_text(field.form_placeholder) }}" />
+        </div>
+        {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
+    </div>
+</div>

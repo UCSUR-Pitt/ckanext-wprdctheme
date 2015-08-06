@@ -1,0 +1,21 @@
+{
+  "organizations": {
+    "City of Pittsburgh": {
+        "departments": [
+          "PGH - Department 1",
+          "PGH - Department 2",
+          "PGH - Department 3",
+          "PGH - Department 4",
+          "PGH - Department 5"
+        ]
+      },
+    "Allegheny County": {
+      "departments": [
+        "AC - Department 1",
+        "AC - Department 2",
+        "AC - Department 3",
+        "AC - Department 4"
+      ]
+    }
+  }
+}

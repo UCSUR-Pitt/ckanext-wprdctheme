@@ -23,15 +23,17 @@ def check_if_google():
         return False
 
 
-class WPRDCPlugin(p.SingletonPlugin):
+class WPRDCPlugin(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
 
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.IRoutes, inherit=True)
     p.implements(p.ITemplateHelpers, inherit=True)
+    p.implements(p.IDatasetForm)
 
     def update_config(self, config):
         p.toolkit.add_template_directory(config, 'templates')
         p.toolkit.add_public_directory(config, 'public')
+        p.toolkit.add_resource('fanstatic', 'wprdc_theme')
 
     def check_user_terms(self):
         if check_if_google():
@@ -95,6 +97,41 @@ class WPRDCPlugin(p.SingletonPlugin):
             'terms', '/terms-of-use', controller=controller, action='submit_terms', conditions=dict(method=['POST'])
         )
         return map
+
+    def is_fallback(self):
+        # Return True to register this plugin as the default handler for
+        # package types not handled by any other IDatasetForm plugin.
+        return True
+
+    def package_types(self):
+        # This plugin doesn't handle any special package types, it just
+        # registers itself as the default (above).
+        return []
+
+    def _modify_package_schema(self, schema):
+        schema.update({
+            'dragon': [p.toolkit.get_validator('not_empty'),
+                       p.toolkit.get_converter('convert_to_extras')]
+        })
+        return schema
+
+    def create_package_schema(self):
+        schema = super(WPRDCPlugin, self).create_package_schema()
+        schema = self._modify_package_schema(schema)
+        return schema
+
+    def update_package_schema(self):
+        schema = super(WPRDCPlugin, self).update_package_schema()
+        schema = self._modify_package_schema(schema)
+        return schema
+
+    def show_package_schema(self):
+        schema = super(WPRDCPlugin, self).show_package_schema()
+        schema.update({
+            'dragon': [p.toolkit.get_converter('convert_from_extras'),
+                       p.toolkit.get_validator('not_empty')]
+        })
+        return schema
 
 
 # monkey patch till CKAN v2.5 stable release

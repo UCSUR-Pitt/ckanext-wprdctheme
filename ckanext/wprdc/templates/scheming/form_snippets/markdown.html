@@ -1,0 +1,15 @@
+{% set error = errors[field.field_name] %}
+
+<div class="control-group control-full{% if error %} error{% endif %}">
+    <label class="control-label" for="field-{{ field.field_name }}">
+        {% if h.scheming_field_required(field) %}
+            <span title="This field is required" class="control-required">*</span>
+        {% endif %}
+        {{ h.scheming_language_text(field.label) }}
+    </label>
+    <div class="controls">
+        <textarea id="field-{{ field.field_name }}" name="{{ field.field_name }}" cols="20" rows="5" placeholder="{{ h.scheming_language_text(field.form_placeholder) }}">{{ data[field.field_name] | empty_and_escape }}</textarea>
+        {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
+    </div>
+</div>
+

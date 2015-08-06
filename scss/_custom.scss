@@ -7,7 +7,7 @@
 // 02. CKAN Main Content
 // 03. CKAN Sidebar
 // 04. Footer
-// 04. Terms of Use
+// 05. Terms of Use
 
 //
 
@@ -29,7 +29,6 @@
 // 02. CKAN Main Content
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 div.primary.span9 {
-
   .dataset-item {
     .dataset-heading a {
       font-size: rem-calc(20);
@@ -39,7 +38,6 @@ div.primary.span9 {
       font-size: rem-calc(14);
     }
   }
-
   ul[data-module=media-grid] {
     box-sizing: content-box;
   }
@@ -61,6 +59,16 @@ div.primary.span9 {
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
+  }
+  .metadata-help-info {
+    padding-top: 4px;
+    font-size: 12px;
+    color: $aluminum;
+    line-height: 16px;
+    i {
+      font-size: 14px;
+      color: $wprdc-blue;
+    }
   }
 }
 
