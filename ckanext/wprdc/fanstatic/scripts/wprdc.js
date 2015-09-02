@@ -86,9 +86,7 @@ this.ckan.module('department-generator', function (jQuery, _) {
 
           if(choices) {
             for(var i = 0; i < choices.length; i++) {
-              console.log(dept + ' - ' + choices[i]);
               var sel = (dept == choices[i] ? ' selected="true"' : '');
-
               el.append('<option value="'+choices[i]+'"'+sel+'>'+choices[i]+'</option>');
             }
           } else {

@@ -1,18 +1,22 @@
 import logging
 import re
-import pylons.config as config
-import ckan.lib.captcha as captcha
-import ckan.plugins as p
-import ckan.lib.helpers as h
-from ckan.common import request
-from datetime import date
-from dateutil import tz
 import urllib
 import urllib2
 import json
 
-log = logging.getLogger('ckanext.wprdc')
+import pylons.config as config
+import ckan.lib.captcha as captcha
+import ckan.plugins as p
+import ckan.lib.helpers as h
+import ckan.logic.action.create as _create
+import ckan.logic.action.get as _get
+import ckan.logic.action.delete as _delete
 
+from ckan.common import request
+from datetime import date
+from dateutil import tz
+
+log = logging.getLogger('ckanext.wprdc')
 
 def check_if_google():
     regex = re.compile("bot|crawl|slurp|spider|python", re.IGNORECASE)
@@ -23,17 +27,28 @@ def check_if_google():
         return False
 
 
-class WPRDCPlugin(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
+class WPRDCPlugin(p.SingletonPlugin):
 
     p.implements(p.IConfigurer, inherit=True)
-    p.implements(p.IRoutes, inherit=True)
     p.implements(p.ITemplateHelpers, inherit=True)
-    p.implements(p.IDatasetForm)
+    p.implements(p.IRoutes, inherit=True)
+    p.implements(p.IPackageController, inherit=True)
 
+    # IConfigurer
     def update_config(self, config):
         p.toolkit.add_template_directory(config, 'templates')
         p.toolkit.add_public_directory(config, 'public')
         p.toolkit.add_resource('fanstatic', 'wprdc_theme')
+
+    # ITemplateHelpers
+    def get_helpers(self):
+        return {
+            'wprdc_user_terms': self.check_user_terms,
+            'wprdc_get_year': self.get_current_year,
+            'wprdc_wordpress_url': self.get_wordpress_url,
+            'wprdc_google_tracking': self.get_google_tracking,
+            'render_datetime': self.convert_to_local,
+        }
 
     def check_user_terms(self):
         if check_if_google():
@@ -77,16 +92,7 @@ class WPRDCPlugin(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
         else:
             return time.strftime('%B %-d, %Y')
 
-
-    def get_helpers(self):
-        return {
-            'wprdc_user_terms': self.check_user_terms,
-            'wprdc_get_year': self.get_current_year,
-            'wprdc_wordpress_url': self.get_wordpress_url,
-            'wprdc_google_tracking': self.get_google_tracking,
-            'render_datetime': self.convert_to_local,
-        }
-
+    # IRoutes
     def before_map(self, map):
         controller = 'ckanext.wprdc.controller:WPRDCController'
         map.redirect('/', '/dataset')
@@ -98,41 +104,31 @@ class WPRDCPlugin(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
         )
         return map
 
-    def is_fallback(self):
-        # Return True to register this plugin as the default handler for
-        # package types not handled by any other IDatasetForm plugin.
-        return True
+    # IPackageController
+    def after_create(self, context, pkg_dict):
+        data = {
+            'id': pkg_dict['group'],
+            'object': pkg_dict['id'],
+            'object_type': 'package',
+            'capacity': 'public'
+        }
+        _create.member_create(context, data)
 
-    def package_types(self):
-        # This plugin doesn't handle any special package types, it just
-        # registers itself as the default (above).
-        return []
+    def after_update(self, context, pkg_dict):
+        data = {
+            'id': pkg_dict['group'],
+            'object': pkg_dict['id'],
+            'object_type': 'package',
+            'capacity': 'public'
+        }
+        _create.member_create(context, data)
+        self.remove_from_other_groups(context, pkg_dict['id'])
 
-    def _modify_package_schema(self, schema):
-        schema.update({
-            'dragon': [p.toolkit.get_validator('not_empty'),
-                       p.toolkit.get_converter('convert_to_extras')]
-        })
-        return schema
-
-    def create_package_schema(self):
-        schema = super(WPRDCPlugin, self).create_package_schema()
-        schema = self._modify_package_schema(schema)
-        return schema
-
-    def update_package_schema(self):
-        schema = super(WPRDCPlugin, self).update_package_schema()
-        schema = self._modify_package_schema(schema)
-        return schema
-
-    def show_package_schema(self):
-        schema = super(WPRDCPlugin, self).show_package_schema()
-        schema.update({
-            'dragon': [p.toolkit.get_converter('convert_from_extras'),
-                       p.toolkit.get_validator('not_empty')]
-        })
-        return schema
-
+    def remove_from_other_groups(self, context, package_id):
+        package = _get.package_show(context, {'id': package_id})
+        for group in package['groups']:
+            if group['name'] != package['group']:
+                _delete.member_delete(context, {'id': group['id'], 'object': package['id'], 'object_type': 'package'})
 
 # monkey patch till CKAN v2.5 stable release
 def replace_check_recaptcha(request):

@@ -101,6 +101,14 @@
         "display_snippet": "text.html",
         "output_validators": "ignore_missing"
       }
+    },
+    {
+      "preset_name": "group",
+      "values": {
+        "form_snippet": "group.html",
+        "display_snippet": "group.html",
+        "output_validators": "scheming_required"
+      }
     }
   ]
 }

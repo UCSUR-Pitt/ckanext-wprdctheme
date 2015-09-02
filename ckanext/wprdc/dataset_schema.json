@@ -42,10 +42,16 @@
             "help_text": "License definitions and additional information can be found at http://opendefinition.org/"
         },
         {
+          "field_name": "group",
+          "label": "Group/Topic",
+          "help_text": "The group/topic of the dataset identified by the list of possible values. If a data set can fall into multiple categories, select the one which is most significant. This list will be subject to change on an ongoing basis. The WPRDC will refine this list as we proceed.",
+          "preset": "group",
+          "required": true
+        },
+        {
             "field_name": "owner_org",
             "label": "Organization",
-            "preset": "dataset_organization",
-            "findthisplease": true
+            "preset": "dataset_organization"
         },
         {
           "field_name": "department",
@@ -53,28 +59,297 @@
           "preset": "department",
           "choices": {
             "City of Pittsburgh": [
-                "PGH - Department 1",
-                "PGH - Department 2",
-                "PGH - Department 3",
-                "PGH - Department 4",
-                "PGH - Department 5",
-                "Other"
+                "Department of City Planning",
+                "Bureau of Animal Care & Control; Department of Public Safety",
+                "Citiparks",
+                "City Clerks Office",
+                "City Controller",
+                "City Council",
+                "Department of City Planning",
+                "Emergency Management Agency; Department of Public Safety",
+                "Emergency Medical Services; Department of Public Safety",
+                "Department of Finance",
+                "Fire Bureau; Department of Public Safety",
+                "Department of Innovation & Performance",
+                "Law Department",
+                "Mayor's Office",
+                "Office of Municipal Investigations",
+                "Pension Office",
+                "Department of Personnel and Civil Service Commission",
+                "Police Bureau; Department of Public Safety",
+                "Department of Public Safety",
+                "Department of Public Works",
+                "Office of Management and Budget",
+                "Department of Permits, Licenses, and Inspections"
             ],
             "Allegheny County": [
-                "AC - Department 1",
-                "AC - Department 2",
-                "AC - Department 3",
-                "AC - Department 4",
-                "Other"
+                "Department of Court Records",
+                "Department of Health",
+                "Office of Property Assessments; Department of Administrative Services",
+                "Sheriff's Office",
+                "Treasurer",
+                "Department of Human Services",
+                "Administration Division; Department of Administrative Services",
+                "Bureau of Weights and Measures; Department of Administrative Services",
+                "Division of Computer Services; Department of Administrative Services",
+                "Elections Divison; Department of Administrative Services",
+                "Geographic Information Systems Group; Department of Administrative Services",
+                "Mailing Services; Department of Administrative Services",
+                "Photography; Department of Administrative Services",
+                "Printing Services; Department of Administrative Services",
+                "Division of Purchasing & Supplies; Department of Administrative Services",
+                "Records Administration; Department of Administrative Services",
+                "Veterans' Services; Department of Administrative Services",
+                "Department of Administrative Services",
+                "Communications Division",
+                "Office of the County Council",
+                "Office of the County Executive",
+                "Department of Human Resources",
+                "Information Center",
+                "Department of Minority, Women, and Disadvantaged Business Enterprise",
+                "Office of Budget & Finance",
+                "Controller's Office",
+                "Economic Development",
+                "Department of Real Estate",
+                "Court of Common Pleas",
+                "District Attorney",
+                "Jail",
+                "Court of Common Pleas; Fifth Judicial District of Pennsylvania",
+                "Minor Judiciary; Fifth Judicial District of Pennsylvania",
+                "Law Department",
+                "Office of the Medical Examiner",
+                "County Police",
+                "Office of the Public Defender",
+                "Shuman Juvenile Detention Center",
+                "Department of Human Services",
+                "Kane Regional Centers",
+                "Emergency Services",
+                "Department of Facilities Management",
+                "Parks Department",
+                "Public Works"
             ]
           }
         },
         {
           "field_name": "temporal_coverage",
           "label": "Temporal Coverage",
-          "preset": "date",
+          "form_placeholder": "YYYY-MM-DD/YYYY-MM-DD",
+          "form_snippet": "text.html",
           "required": true,
           "help_text": "Start/End periods covered by the data. Separate start and end by a \"/\". Use years (YYYY), dates (YYYY-MM-DD), or dates and times (YYY-MM-DD\"T\"HHMMSS) Examples:4 digit year (2013/2015), Date (2011-02-14/2013-07-04), Date/Time (2011-02-14T12:00:00Z/2013-07-04T19:34:00Z)"
+        },
+        {
+          "field_name": "geographic_unit",
+          "label": "Geographic Unit",
+          "preset": "select",
+          "help_text": "At what geographic unit is the data collected? For example, if the data is collected by address, it would be Street Address.",
+          "choices": [
+            {
+              "value": "N/A",
+              "label": "Not Applicable"
+            },
+            {
+              "value": "Latitude/Longitude",
+              "label": "Latitude/Longitude"
+            },
+            {
+              "value": "Street Address",
+              "label": "Street Address"
+            },
+            {
+              "value": "Intersection/Street Segment",
+              "label": "Intersection/Street Segment"
+            },
+            {
+              "value": "Parcel (Block/Lot)",
+              "label": "Parcel (Block/Lot)"
+            },
+            {
+              "value": "Census Block",
+              "label": "Census Block"
+            },
+            {
+              "value": "Census Block Group",
+              "label": "Census Block Group"
+            },
+            {
+              "value": "Census Tract",
+              "label": "Census Tract"
+            },
+            {
+              "value": "Zoning District",
+              "label": "Zoning District"
+            },
+            {
+              "value": "Neighborhood",
+              "label": "Neighborhood"
+            },
+            {
+              "value": "Political District",
+              "label": "Political District"
+            },
+            {
+              "value": "County",
+              "label": "County"
+            },
+            {
+              "value": "Zip Code",
+              "label": "Zip Code"
+            },
+            {
+              "value": "Municipal",
+              "label": "Municipal"
+            },
+            {
+              "value": "Raster",
+              "label": "Raster"
+            },
+            {
+              "value": "Other",
+              "label": "Other"
+            }
+          ]
+        },
+        {
+            "field_name": "data_notes",
+            "label": "Data Notes",
+            "form_snippet": "markdown.html",
+            "form_placeholder": "eg. Some additional useful notes about the data",
+            "help_text": "Are there any concerns about overall data reliability? Are there any changes in data collection or methods that the user should be aware of? Are there any constraints with data accuracy? What levels of confidence with this dataset could the user reasonably assume?"
+        },
+        {
+            "field_name": "related_documents",
+            "label": "Related Document(s)",
+            "form_snippet": "text.html",
+            "help_text": "Related documents such as technical information about a dataset, developer documentation, etc."
+        },
+        {
+          "field_name": "frequency_data_change",
+          "label": "Fequency - Data Change",
+          "preset": "select",
+          "required": true,
+          "help_text": "Frequency with which dataset changes. This can be a relative frequency - If the file changes every 1st and 4th Monday, we can code this as bi-monthly, etc.",
+          "choices": [
+            {
+              "value": "Not Updated (Historical Only)",
+              "label": "Not Updated (Historical Only)"
+            },
+            {
+              "value": "As Needed",
+              "label": "As Needed"
+            },
+            {
+              "value": "Bi-Annually",
+              "label": "Bi-Annually"
+            },
+            {
+              "value": "Quarterly",
+              "label": "Quarterly"
+            },
+            {
+              "value": "Bi-Monthly",
+              "label": "Bi-Monthly"
+            },
+            {
+              "value": "Monthly",
+              "label": "Monthly"
+            },
+            {
+              "value": "Bi-Weekly",
+              "label": "Bi-Weekly"
+            },
+            {
+              "value": "Weekly",
+              "label": "Weekly"
+            },
+            {
+              "value": "Daily",
+              "label": "Daily"
+            },
+            {
+              "value": "Hourly",
+              "label": "Hourly"
+            },
+            {
+              "value": "Multiple Times per Hour",
+              "label": "Multiple Times per Hour"
+            },
+            {
+              "value": "Streaming (Real Time)",
+              "label": "Streaming (Real Time)"
+            }
+          ]
+        },
+        {
+          "field_name": "frequency_publishing",
+          "label": "Fequency - Publishing",
+          "preset": "select",
+          "required": true,
+          "help_text": "Frequency with which dataset is published.",
+          "choices": [
+            {
+              "value": "Not Updated (Historical Only)",
+              "label": "Not Updated (Historical Only)"
+            },
+            {
+              "value": "As Needed",
+              "label": "As Needed"
+            },
+            {
+              "value": "Bi-Annually",
+              "label": "Bi-Annually"
+            },
+            {
+              "value": "Quarterly",
+              "label": "Quarterly"
+            },
+            {
+              "value": "Bi-Monthly",
+              "label": "Bi-Monthly"
+            },
+            {
+              "value": "Monthly",
+              "label": "Monthly"
+            },
+            {
+              "value": "Bi-Weekly",
+              "label": "Bi-Weekly"
+            },
+            {
+              "value": "Weekly",
+              "label": "Weekly"
+            },
+            {
+              "value": "Daily",
+              "label": "Daily"
+            },
+            {
+              "value": "Hourly",
+              "label": "Hourly"
+            },
+            {
+              "value": "Multiple Times per Hour",
+              "label": "Multiple Times per Hour"
+            },
+            {
+              "value": "Streaming (Real Time)",
+              "label": "Streaming (Real Time)"
+            }
+          ]
+        },
+        {
+            "field_name": "data_steward_name",
+            "label": "Data Steward Name",
+            "form_snippet": "text.html",
+            "required": true,
+            "help_text": "Data Steward's name. Who manages the data and is responsible for making changes to the data? Who understands what the dataset includes and can answer questions about it?"
+        },
+        {
+            "field_name": "data_steward_email",
+            "label": "Data Steward Email",
+            "form_snippet": "text.html",
+            "required": true,
+            "help_text": "Data Steward's email address."
         }
     ],
     "resource_fields": [

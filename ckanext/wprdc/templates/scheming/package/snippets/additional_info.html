@@ -57,13 +57,13 @@
           </tr>
         {% endif %}
         {% if pkg_dict.organization %}
+        {% set url = h.url_for(controller='organization', action='read', id=pkg_dict.organization.name) %}
           <tr>
             <th scope="row" class="dataset-label">{{ _("Organization") }}</th>
-            <td class="dataset-details">{{ pkg_dict.organization.title }}</td>
+            <td class="dataset-details">{{ h.link_to(pkg_dict.organization.title, url) }}</td>
           </tr>
         {% endif %}
     {% endblock %}
-
 
     {% block package_additional_info %}
       {%- for field in schema.dataset_fields -%}
@@ -86,9 +86,6 @@
         </tr>
       {% endif %}
     {% endblock %}
-
-
-
     </tbody>
   </table>
 </section>
