@@ -17,12 +17,18 @@ paster initdb -c /etc/ckan/default/production.ini
 Edit your CKAN Configuration .INI file
 
 ```bash
-ckan.ckan.api_key = <admin_api_key>
 ckan.wordpress_url = http://<wordpress_url>
+
 ckan.google_tracking = UA-00000000-01
-ckan.plugins = ... wprdc
+
+disqus.name = <disqus_name>
+
 scheming.dataset_schemas = ckanext.wprdc:dataset_schema.json
 scheming.presets = ckanext.wprdc:dataset_presets.json
+
+ckan.datarequests.comments = False
+
+ckan.plugins = ... wprdc
 ```
 
 
