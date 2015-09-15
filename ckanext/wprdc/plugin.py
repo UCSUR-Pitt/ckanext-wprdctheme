@@ -106,23 +106,25 @@ class WPRDCPlugin(p.SingletonPlugin):
 
     # IPackageController
     def after_create(self, context, pkg_dict):
-        data = {
-            'id': pkg_dict['group'],
-            'object': pkg_dict['id'],
-            'object_type': 'package',
-            'capacity': 'public'
-        }
-        _create.member_create(context, data)
+        if 'group' in pkg_dict:
+            data = {
+                'id': pkg_dict['group'],
+                'object': pkg_dict['id'],
+                'object_type': 'package',
+                'capacity': 'public'
+            }
+            _create.member_create(context, data)
 
     def after_update(self, context, pkg_dict):
-        data = {
-            'id': pkg_dict['group'],
-            'object': pkg_dict['id'],
-            'object_type': 'package',
-            'capacity': 'public'
-        }
-        _create.member_create(context, data)
-        self.remove_from_other_groups(context, pkg_dict['id'])
+        if 'group' in pkg_dict:
+            data = {
+                'id': pkg_dict['group'],
+                'object': pkg_dict['id'],
+                'object_type': 'package',
+                'capacity': 'public'
+            }
+            _create.member_create(context, data)
+            self.remove_from_other_groups(context, pkg_dict['id'])
 
     def remove_from_other_groups(self, context, package_id):
         package = _get.package_show(context, {'id': package_id})
