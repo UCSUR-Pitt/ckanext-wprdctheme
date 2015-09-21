@@ -25,7 +25,6 @@
             "label": "Description",
             "form_snippet": "markdown.html",
             "form_placeholder": "eg. Some useful notes about the data",
-            "required": true,
             "help_text": "Provide a longer description of the data (compared to the title) that can be readily understood by non-technical users."
         },
         {
@@ -45,8 +44,7 @@
           "field_name": "group",
           "label": "Group/Topic",
           "help_text": "The group/topic of the dataset identified by the list of possible values. If a data set can fall into multiple categories, select the one which is most significant. This list will be subject to change on an ongoing basis. The WPRDC will refine this list as we proceed.",
-          "preset": "group",
-          "required": true
+          "preset": "group"
         },
         {
             "field_name": "owner_org",
@@ -135,7 +133,6 @@
           "label": "Temporal Coverage",
           "form_placeholder": "YYYY-MM-DD/YYYY-MM-DD",
           "form_snippet": "text.html",
-          "required": true,
           "help_text": "Start/End periods covered by the data. Separate start and end by a \"/\". Use years (YYYY), dates (YYYY-MM-DD), or dates and times (YYY-MM-DD\"T\"HHMMSS) Examples:4 digit year (2013/2015), Date (2011-02-14/2013-07-04), Date/Time (2011-02-14T12:00:00Z/2013-07-04T19:34:00Z)"
         },
         {
@@ -227,7 +224,6 @@
           "field_name": "frequency_data_change",
           "label": "Fequency - Data Change",
           "preset": "select",
-          "required": true,
           "help_text": "Frequency with which dataset changes. This can be a relative frequency - If the file changes every 1st and 4th Monday, we can code this as bi-monthly, etc.",
           "choices": [
             {
@@ -284,7 +280,6 @@
           "field_name": "frequency_publishing",
           "label": "Fequency - Publishing",
           "preset": "select",
-          "required": true,
           "help_text": "Frequency with which dataset is published.",
           "choices": [
             {
@@ -341,14 +336,12 @@
             "field_name": "data_steward_name",
             "label": "Data Steward Name",
             "form_snippet": "text.html",
-            "required": true,
             "help_text": "Data Steward's name. Who manages the data and is responsible for making changes to the data? Who understands what the dataset includes and can answer questions about it?"
         },
         {
             "field_name": "data_steward_email",
             "label": "Data Steward Email",
             "form_snippet": "text.html",
-            "required": true,
             "help_text": "Data Steward's email address."
         }
     ],

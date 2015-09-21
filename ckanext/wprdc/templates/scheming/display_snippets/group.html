@@ -1,4 +1,6 @@
 {% set title = h.group_name_to_title(data[field.field_name]) %}
 {% set group = {'name': data[field.field_name], 'title': title} %}
 
-{{ h.group_link(group) }}
+{% if data[field.field_name]: %}
+    {{ h.group_link(group) }}
+{% endif %}
