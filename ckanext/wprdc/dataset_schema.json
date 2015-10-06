@@ -129,6 +129,13 @@
           }
         },
         {
+          "field_name": "access_level_comment",
+          "label": "Public Access Level Comment",
+          "form_snippet": "markdown.html",
+          "form_placeholder": "eg. An ordinance prohibits release of owner names.",
+          "help_text": "An explanation of any steps that have been taken to  make a sensitive dataset public, where appropriate, including obfuscation, aggregation, or anonymization."
+        },
+        {
           "field_name": "temporal_coverage",
           "label": "Temporal Coverage",
           "form_placeholder": "YYYY-MM-DD/YYYY-MM-DD",
@@ -222,7 +229,7 @@
         },
         {
           "field_name": "frequency_data_change",
-          "label": "Fequency - Data Change",
+          "label": "Frequency - Data Change",
           "preset": "select",
           "help_text": "Frequency with which dataset changes. This can be a relative frequency - If the file changes every 1st and 4th Monday, we can code this as bi-monthly, etc.",
           "choices": [
@@ -278,7 +285,7 @@
         },
         {
           "field_name": "frequency_publishing",
-          "label": "Fequency - Publishing",
+          "label": "Frequency - Publishing",
           "preset": "select",
           "help_text": "Frequency with which dataset is published.",
           "choices": [

@@ -9,9 +9,6 @@ import pylons.config as config
 import ckan.lib.captcha as captcha
 import ckan.plugins as p
 import ckan.lib.helpers as h
-import ckan.logic.action.create as _create
-import ckan.logic.action.get as _get
-import ckan.logic.action.delete as _delete
 
 from ckan.common import request
 from dateutil import tz
@@ -114,7 +111,7 @@ class WPRDCPlugin(p.SingletonPlugin):
                     'object_type': 'package',
                     'capacity': 'public'
                 }
-                _create.member_create(context, data)
+                p.toolkit.get_action('member_create')(context, data)
 
     def after_update(self, context, pkg_dict):
         if 'group' in pkg_dict:
@@ -125,14 +122,14 @@ class WPRDCPlugin(p.SingletonPlugin):
                     'object_type': 'package',
                     'capacity': 'public'
                 }
-                _create.member_create(context, data)
+                p.toolkit.get_action('member_create')(context, data)
             self.remove_from_other_groups(context, pkg_dict['id'])
 
     def remove_from_other_groups(self, context, package_id):
-        package = _get.package_show(context, {'id': package_id})
+        package = p.toolkit.get_action('package_show')(context, {'id': package_id})
         for group in package['groups']:
             if group['name'] != package['group']:
-                _delete.member_delete(context, {'id': group['id'], 'object': package['id'], 'object_type': 'package'})
+                p.toolkit.get_action('member_delete')(context, {'id': group['id'], 'object': package['id'], 'object_type': 'package'})
 
 # monkey patch till CKAN v2.5 stable release
 def replace_check_recaptcha(request):
