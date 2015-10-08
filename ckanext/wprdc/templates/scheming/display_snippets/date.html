@@ -1,11 +1,8 @@
-{% set title = h.group_name_to_title(data[field.field_name]) %}
-{% set group = {'name': data[field.field_name], 'title': title} %}
-
-{% if data[field.field_name]: %}
+{%- if data[field.field_name] -%}
 <tr>
     <th scope="row" class="dataset-label">{{ h.scheming_language_text(field.label) }}</th>
     <td class="dataset-details"{% if field.display_property %} property="{{ field.display_property }}"{% endif %}>
-       {{ h.group_link(group) }}
+        {{ data[field.field_name].split()[0] }}
     </td>
 </tr>
-{% endif %}
+{%- endif -%}

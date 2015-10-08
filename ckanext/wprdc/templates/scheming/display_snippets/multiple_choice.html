@@ -1,0 +1,26 @@
+
+{%- if data[field.field_name] -%}
+<tr>
+    <th scope="row" class="dataset-label">{{ h.scheming_language_text(field.label) }}</th>
+    <td class="dataset-details"{% if field.display_property %} property="{{ field.display_property }}"{% endif %}>
+        {%- set values = data[field.field_name] -%}
+        {%- set labels = [] -%}
+
+        {%- for choice in field.choices -%}
+            {%- if choice.value in values -%}
+              {%- do labels.append(h.scheming_language_text(choice.label)) -%}
+            {%- endif -%}
+        {%- endfor -%}
+
+        {%- if labels|length == 1 -%}
+          {{ labels[0] }}
+        {%- else -%}
+          <ul>
+            {%- for label in labels -%}
+               <li>{{ label }}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+    </td>
+</tr>
+{%- endif -%}

@@ -54,8 +54,18 @@
         </ul>
         <section class="top-bar-section">
             <ul id="menu-topbar-nav" class="right">
-                <li><a href="{{ h.wprdc_wordpress_url() }}">Home</a></li>
-                <li><a href="{{ h.wprdc_wordpress_url() }}/about">About</a></li>
+                <li><a href="{{ h.wprdc_wordpress_url() }}/dd">Home</a></li>
+                <li class="has-dropdown"><a href="{{ h.wprdc_wordpress_url() }}/about">About</a>
+                    <ul class="sub-menu dropdown">
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/background/">Background</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/code-of-conduct/">Code of Conduct</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/leadership/">Leadership</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/partners/">Partners</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/performance-management/">Performance Management</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/philosophy/">Philosophy</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/bios/">Staff</a></li>
+                    </ul>
+                </li>
                 <li class="active has-dropdown">
                     <a href="#">Data</a>
                     <ul class="sub-menu dropdown">
@@ -68,8 +78,42 @@
                     </ul>
                 </li>
                 <li><a href="{{ h.wprdc_wordpress_url() }}/news">News</a></li>
-                <li><a href="{{ h.wprdc_wordpress_url() }}/events">Events</a></li>
-                <li><a href="{{ h.wprdc_wordpress_url() }}/resources">Resources</a></li>
+                <li class="has-dropdown"><a href="{{ h.wprdc_wordpress_url() }}/get-involved/">Get Involved</a>
+                    <ul class="sub-menu dropdown">
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/ask-a-question/">Ask a Question</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/build-tools-and-visualizations/">Build Tools and Visualizations</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/contribute-to-documentation/">Contribute to Documentation</a></li>
+                        <li class="has-dropdown"><a href="{{ h.wprdc_wordpress_url() }}/events/">Events</a>
+                            <ul class="sub-menu dropdown">
+                                <li><a href="{{ h.wprdc_wordpress_url() }}/data-user-groups/">Data User Groups</a></li>
+                                <li><a href="{{ h.wprdc_wordpress_url() }}/training/">Training</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/keep-me-informed/">Keep Me Informed</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/request-data/">Request Data</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/share-data/">Share Data</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/share-your-data-story/">Share Your Stories</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown"><a href="{{ h.wprdc_wordpress_url() }}/resources/">Resources</a>
+                    <ul class="sub-menu dropdown">
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/developer-resources/">API Documentation</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/data-user-guides/">Data User Guides</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/licensing/">Legal Infrastructure</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/documenting-data/">Metadata</a></li>
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/tutorials-2/">Tutorials</a></li>
+                        <li class="has-dropdown"><a href="{{ h.wprdc_wordpress_url() }}/external-links/">Additional Resources and Links</a>
+                            <ul class="sub-menu dropdown">
+                                <li><a href="{{ h.wprdc_wordpress_url() }}/attribution-and-citation/">Data Attribution and Citation</a></li>
+                                <li><a href="{{ h.wprdc_wordpress_url() }}/data-licenses/">Data Licenses</a></li>
+                                <li><a href="{{ h.wprdc_wordpress_url() }}/open-data-resources/">Open Data</a></li>
+                                <li><a href="{{ h.wprdc_wordpress_url() }}/protecting-privacy/">Data Privacy</a></li>
+                                <li><a href="{{ h.wprdc_wordpress_url() }}/presentations/">Presentation Archive</a></li>
+                                <li><a href="{{ h.wprdc_wordpress_url() }}/right-to-know-legislationfreedom-of-information-act/">Right to Know Law/Freedom of Information Act</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
                 <li><a href="{{ h.wprdc_wordpress_url() }}/contact">Contact</a></li>
             </ul>
         </section>
