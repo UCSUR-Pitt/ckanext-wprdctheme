@@ -69,12 +69,13 @@
                 <li class="active has-dropdown">
                     <a href="#">Data</a>
                     <ul class="sub-menu dropdown">
-                    {{h.build_nav_main(
-                        ('search', _('Datasets')),
-                        ('organizations_index', _('Organizations')),
-                        ('group_index', _('Groups/Topics')),
-                        ('datarequests_index', _('Data Requests')),
-                    )}}
+                        {{h.build_nav_main(
+                            ('search', _('Datasets')),
+                            ('organizations_index', _('Organizations')),
+                            ('group_index', _('Groups/Topics')),
+                            ('datarequests_index', _('Data Requests')),
+                        )}}
+                        <li><a href="{{ h.wprdc_wordpress_url() }}/showcase/">Showcase</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ h.wprdc_wordpress_url() }}/news">News</a></li>
