@@ -36,6 +36,7 @@ div.primary.span9 {
     }
     div {
       font-size: rem-calc(14);
+      word-wrap: break-word;
     }
   }
   ul[data-module=media-grid] {
