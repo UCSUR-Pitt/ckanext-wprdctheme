@@ -54,8 +54,11 @@ class WPRDCPlugin(p.SingletonPlugin):
             if 'wprdc_user_terms' in request.cookies:
                 return True
             else:
-                controller = 'ckanext.wprdc.controller:WPRDCController'
-                h.redirect_to(controller=controller, action='view_terms', came_from=request.url)
+                return False
+                # request_uri = request.environ.get('REQUEST_URI', '')
+                # controller = 'ckanext.wprdc.controller:WPRDCController'
+                # #h.redirect_to(controller=controller, action='view_terms', came_from=request.url)
+                # h.redirect_to(controller=controller, action='view_terms', came_from=request_uri)
 
     def get_current_year(self):
         return datetime.date.today().year

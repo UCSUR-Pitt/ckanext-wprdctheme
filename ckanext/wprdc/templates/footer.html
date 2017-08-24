@@ -1,27 +1,29 @@
-<div id="footer">
-    <div class="sub-footer">
-        <div class="row">
-            <div class="medium-12 columns">
-                <p class="footer-title">About</p>
-                <p>The Western Pennsylvania Regional Data Center supports key community initiatives by making public information easier to find and use. The Data Center provides a technological and legal infrastructure for data sharing to support a growing ecosystem of data providers and data users. The Data Center maintains Allegheny County and the City of Pittsburgh’s open data portal, and provides a number of services to data publishers and users. The Data Center also hosts datasets from these and other public sector agencies, academic institutions, and non-profit organizations. The Data Center is managed by the University of Pittsburgh’s Center for Social and Urban Research, and is a partnership of the University, Allegheny County and the City of Pittsburgh.</p>
-            </div>
-        </div>
-    </div>
+<div id="footer" class="footer-container" data-sticky-footer>
+    <footer class="footer">
+        <div class="medium-3 column">
+            <img class="footer-logo" src="{{ g.site_url + '/plain_logo_rbg_cropped.svg' }}">
+            <ul class="quick-links">
+                <li><a class="yellow" href="{{ g.site_url + '/about' }}">About</a></li>
+                <li><a class="yellow" href="{{ g.site_url + '/contact' }}">Contact Us</a></li>
+                <li><a class="yellow" href="{{ g.site_url + '/terms' }}">Terms</a></li>
+                <li><a class="yellow" href="{{ g.site_url + '/privacy' }}">Privacy</a></li>
+            </ul>
 
-    <div class="legal">
-        <div class="row">
-            <div class="small-12 columns">
-                <p class="clearfix">
-                <span class="left">
-                    <a href="http://www.wprdc.org/about/">About</a> &nbsp; | &nbsp;
-                    <a href="http://www.wprdc.org/contact/">Contact</a> &nbsp; | &nbsp;
-                    <a href="http://www.wprdc.org/terms-of-use/">Terms</a> &nbsp; | &nbsp;
-                    <a href="http://www.wprdc.org/privacy-policy/">Privacy</a>
-                </span>
-                    <span class="right">Powered by <a href="http://ucsur.pitt.edu" target="_blank">UCSUR</a>.</span>
-                </p>
-                <p>&copy; {{ h.wprdc_get_year() }}. &nbsp; All rights reserved.</p>
-            </div>
         </div>
+        <div class="medium-9 column">
+            <p>The Western Pennsylvania Regional Data Center supports key community initiatives by making public
+                information easier to find and use. The Data Center provides a technological and legal
+                infrastructure for data sharing to support a growing ecosystem of data providers and data users.
+                The Data Center maintains Allegheny County and the City of Pittsburgh’s open data portal, and
+                provides a number of services to data publishers and users. The Data Center also hosts datasets
+                from these and other public sector agencies, academic institutions, and non-profit
+                organizations. The Data Center is managed by the University of Pittsburgh’s Center for Social
+                and Urban Research, and is a partnership of the University, Allegheny County and the City of
+                Pittsburgh.</p>
+        </div>
+    </footer>
+    <div class="subfooter">
+
+        <p class="text-center" style="margin: 0">&copy; 2017 University of Pittsburgh, UCSUR, Western Pennsylvania Regional Data Center</p>
     </div>
 </div>

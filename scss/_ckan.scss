@@ -1,0 +1,112 @@
+// CKAN Menu Bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+#account-header {
+  background: $wprdc-yellow;
+  height: $account-header-height;
+  nav {
+    position:relative;
+    float:right;
+    a {
+      line-height: $account-header-height;
+      font-size: rem-calc(14);
+      padding: .5rem;
+      color: $wprdc-black;;
+    }
+  }
+}
+
+// CKAN Main Content
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+div.primary.span9 {
+  .dataset-item {
+    .dataset-heading a {
+      font-size: rem-calc(20);
+      font-weight: bold;
+    }
+    div {
+      font-size: rem-calc(14);
+      word-wrap: break-word;
+    }
+  }
+  ul[data-module=media-grid] {
+    box-sizing: content-box;
+  }
+
+  form.dataset-form {
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+  }
+  form.form-horizontal {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+  button.highlight {
+    margin: 0;
+  }
+  div.pagination {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+  .metadata-help-info {
+    padding-top: 4px;
+    font-size: 12px;
+    color: $dark-gray;
+    line-height: 16px;
+    i {
+      font-size: 14px;
+      color: $wprdc-yellow;
+    }
+  }
+  // Fix for font's extra space at top
+  select{
+    vertical-align: middle;
+    padding-top: 6px;
+  }
+
+  input.search{
+    &:focus{
+      $hoff: 0;
+      $voff: 0;
+      $blur: .5rem;
+      $color: rgba($wprdc-yellow, 0.35);
+      -webkit-box-shadow: $hoff $voff $blur $color;
+      -moz-box-shadow:  $hoff $voff $blur $color;
+      box-shadow:  $hoff $voff $blur $color;
+      border-color: $wprdc-yellow;
+    }
+  }
+}
+
+
+// CKAN Sidebar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+aside.secondary.span3 {
+  div.module-content {
+    p {
+      font-size: rem-calc(13);
+    }
+  }
+  p.module-content {
+    font-size: rem-calc(13);
+  }
+}
+
+
+.input-prepend {
+  input {
+    font-size: $input-font-size;
+    height: 30px;
+  }
+}
+
+
+// CKAN Buttons
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+.btn.btn-primary {
+  background-color: $wprdc-black;
+  background-image: linear-gradient(to bottom,lighten($wprdc-black, 10%),$wprdc-black);
+  color: $wprdc-gray;
+}

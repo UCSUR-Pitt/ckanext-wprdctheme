@@ -32,7 +32,7 @@
             "label": "Tags",
             "preset": "tag_string_autocomplete",
             "form_placeholder": "eg. economy, mental health, government",
-            "help_text": "Keywords that describe the dataset. Enter separated by semicolons. Acronyms acceptable. Use technical and non-technical terms. Use as many as needed. Use plural forms of the word, and also singular forms if different from plural (i.e. leaf/leaves, wife/wives)"
+            "help_text": "Keywords that describe the dataset. Enter separated by commas or carriage returns. Acronyms acceptable. Use technical and non-technical terms. Use as many as needed. Use plural forms of the word, and also singular forms if different from plural (i.e. leaf/leaves, wife/wives)"
         },
         {
             "field_name": "license_id",
@@ -125,12 +125,6 @@
                 "Department of Facilities Management",
                 "Parks Department",
                 "Public Works"
-            ],
-            "Western Pennsylvania Regional Data Center": [
-                "Bureau of Whiteboards",
-                "Department of Commas & Llamas",
-                "Department of Integers",
-                "Department of Many Maps"
             ]
           }
         },
@@ -247,6 +241,10 @@
               "value": "As Needed",
               "label": "As Needed"
             },
+	    {
+	      "value": "Annually",
+	      "label": "Annually"
+	    },
             {
               "value": "Bi-Annually",
               "label": "Bi-Annually"
@@ -303,6 +301,10 @@
               "value": "As Needed",
               "label": "As Needed"
             },
+	    {
+	      "value": "Annually",
+	      "label": "Annually"
+	    },
             {
               "value": "Bi-Annually",
               "label": "Bi-Annually"

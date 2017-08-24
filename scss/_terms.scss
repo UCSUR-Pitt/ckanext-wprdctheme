@@ -1,0 +1,29 @@
+#terms-reveal {
+  max-height: 700px;
+  height: 60vh;
+  width: 700px;
+  border: 3px solid $wprdc-yellow;
+
+}
+
+#terms {
+
+  .underline {
+    text-decoration: underline;
+  }
+  .no-list {
+    list-style: none;
+  }
+  ol {
+    li {
+      margin-top: 10px;
+    }
+    ol {
+      margin-top: 0;
+      margin-bottom: 15px;
+      li {
+        margin-top: 5px;
+      }
+    }
+  }
+}

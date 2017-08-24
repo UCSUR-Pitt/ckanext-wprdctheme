@@ -1,8 +1,9 @@
-{% import 'macros/form.html' as form %}
+{% ckan_extends %}
 
-<article id="terms">
+{% block modal %}
+<article id="terms" class="module reveal" data-reveal >
     <div class="module-content">
-        <h2>Data Use Agreement Terms</h2>
+        <h1>Data Use Agreement Terms</h1>
         <hr>
         <p>The Western Pennsylvania Regional Data Center (WPRDC) is a project led by the University Center of Social and Urban Research (UCSUR) at the University of Pittsburgh ("University") in collaboration with City of Pittsburgh and The County of Allegheny in Pennsylvania. The WPRDC and the WPRDC Project is supported by a grant from the Richard King Mellon Foundation.</p>
         <p>This Data Use Agreement covers the terms and conditions that you must agree to before you access or use the Data on deposit with the WPRDC. By using the data available on the WPRDC website portal, you agree to the terms and conditions of your access to the WPRDC and your use of the Data on deposit with the WPRDC.</p>
@@ -54,8 +55,10 @@
             <li><span class="underline">Governing Law, Jurisdiction, and Venue:</span> User agrees that this Agreement shall be construed and enforced according to the laws of the Commonwealth of Pennsylvania and the sole jurisdiction and venue for the resolution of any dispute arising from or relating to the Agreement shall be the state and federal courts located within the County of Allegheny, Pennsylvania.</li>
         </ol>
         <p>Through clicking the button below, the User represents that he/she is over the age of 18 and  understands and agrees to the terms and conditions set forth above.</p>
-            <input type="hidden" name="came_from" id="terms-came-from" value="{{request.params.get('came_from', h.url('/', locale='default', qualified=true))}}" />
-            <input type="submit" class="btn" id="terms-submit" value="I Agree to the Terms of Use" />
+        <form action="" method="POST">
+            <input type="hidden" name="came_from" value="{{request.params.get('came_from', h.url('/', locale='default', qualified=true))}}" />
+            <input type="submit" class="btn" value="I Agree to the Terms of Use" />
+        </form>
     </div>
 </article>
-
+{%- endblock -%}

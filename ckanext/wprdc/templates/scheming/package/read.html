@@ -1,0 +1,15 @@
+{% ckan_extends %}
+
+{% block package_notes %}
+    {{ super() }}
+
+    {% set view = h.get_canonical_resource_view(pkg.id) %}
+    {% if view %}
+        {% snippet 'package/snippets/resource_view_2.html',
+            resource_view = view['resource_view'],
+            resource = view['resource'],
+            package = pkg
+        %}
+    {% endif %}
+
+{% endblock %}

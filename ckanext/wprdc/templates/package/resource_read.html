@@ -32,7 +32,11 @@
             {% endif %}
             {% if res.url and h.is_url(res.url) %}
               <li>
+                {% if res.url_type %}
                 <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="{{ res.url }}">
+                {% else %}
+                <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" onclick="trackOutboundLink('{{ res.url }}'); return false;" href="{{ res.url }}">
+                {% endif %}
                   {% if res.resource_type in ('listing', 'service') %}
                     <i class="icon-eye-open"></i> {{ _('View') }}
                   {% elif  res.resource_type == 'api' %}
@@ -56,7 +60,11 @@
           {% block resource_read_title %}<h1 class="page-heading">{{ h.resource_display_name(res) | truncate(50) }}</h1>{% endblock %}
           {% block resource_read_url %}
             {% if res.url and h.is_url(res.url) %}
-              <p class="muted ellipsis">{{ _('URL:') }} <a href="{{ res.url }}" title="{{ res.url }}">{{ res.url }}</a></p>
+              {% if res.url_type %}
+                <p class="muted ellipsis">{{ _('URL:') }} <a href="{{ res.url }}" title="{{ res.url }}">{{ res.url }}</a></p>
+              {% else %}
+                <p class="muted ellipsis">{{ _('URL:') }} <a href="{{ res.url }}" onclick="trackOutboundLink('{{ res.url }}'); return false;" title="{{ res.url }}">{{ res.url }}</a></p>
+              {% endif %}
             {% elif res.url %}
               <p class="muted ellipsis">{{ _('URL:') }} {{ res.url }}</p>
             {% endif %}
